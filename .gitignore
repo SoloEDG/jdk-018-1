@@ -1,6 +1,9 @@
 node_modules
 dist
 
+# 测试构建临时产物
+node_modules/.tmp
+
 # PINRU annotation baseline
 node_modules/
 .DS_Store

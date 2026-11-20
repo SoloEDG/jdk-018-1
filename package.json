@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0",
     "typecheck": "vue-tsc --noEmit",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "esbuild test/merge.test.ts test/package.test.ts test/library.test.ts --bundle --platform=node --format=esm --outdir=node_modules/.tmp/glyphtx-tests --log-level=warning && node node_modules/.tmp/glyphtx-tests/merge.test.js && node node_modules/.tmp/glyphtx-tests/package.test.js && node node_modules/.tmp/glyphtx-tests/library.test.js"
   },
   "dependencies": {
     "lucide-vue-next": "^0.468.0",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.0",
     "@vue/compiler-sfc": "^3.5.0",
+    "fake-indexeddb": "^6.2.8",
     "typescript": "~5.7.3",
     "vite": "^6.0.0",
     "vue-tsc": "^2.2.0"

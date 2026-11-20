@@ -6,6 +6,7 @@ import { CropPanel } from "../features/crop";
 import { MappingPanel } from "../features/mapping";
 import { PreviewPanel } from "../features/preview";
 import { ExportPanel } from "../features/export";
+import { HandoffPanel, MergeDialog, HistoryDialog } from "../features/handoff";
 const w = useWorkspace();
 </script>
 <template>
@@ -19,7 +20,7 @@ const w = useWorkspace();
       >
       <div class="header-right">
         <span><LockKeyhole :size="12" /> 本地处理 · 无需上传</span
-        ><span class="version">V.1.0 <ArrowUpRight :size="12" /></span>
+        ><span class="version">V.1.1 <ArrowUpRight :size="12" /></span>
       </div>
     </header>
     <div class="intro">
@@ -33,9 +34,13 @@ const w = useWorkspace();
       </div>
     </div>
     <div class="editor">
-      <aside><SourcePanel /><CropPanel /><MappingPanel /></aside>
+      <aside>
+        <SourcePanel /><CropPanel /><MappingPanel /><HandoffPanel />
+      </aside>
       <div class="result"><PreviewPanel /><ExportPanel /></div>
     </div>
+    <MergeDialog />
+    <HistoryDialog />
     <footer>
       <span role="status">{{ w.notice.value }}</span
       ><span>CRAFTED IN CHARACTERS <b>✳</b></span>

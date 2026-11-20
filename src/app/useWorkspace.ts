@@ -6,6 +6,7 @@ export function useWorkspace() {
   const doc = reactive(createDocument());
   const busy = ref(false),
     notice = ref("所有处理均在你的浏览器中完成");
+  const currentProjectId = ref<string | null>(null);
   let timer: ReturnType<typeof setTimeout>;
   function invalidate() {
     doc.revision++;
@@ -22,6 +23,12 @@ export function useWorkspace() {
     }, 60);
   }
   watch(() => doc.settings.background, invalidate);
-  provide(studioKey, { doc, busy, notice, invalidate });
-  return { doc, busy, notice };
+  provide(studioKey, {
+    doc,
+    busy,
+    notice,
+    invalidate,
+    currentProjectId,
+  });
+  return { doc, busy, notice, currentProjectId };
 }
